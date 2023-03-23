@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  php73:
+    build:
+      context: ./image-php73
+    container_name: php73
+    restart: unless-stopped
+    volumes:
+      - .:/php-shared
+      - ./php.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - $HOME/.composer:/root/.composer
+      - $HOME/poper:$HOME/poper
+  
+  php82:
+    extends: php73
+    container_name: php82
+    build:
+      context: ./image-php82
+
+  nginx:
+    container_name: php-nginx
+    restart: unless-stopped
+    build:
+      context: ./image-nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - .:/php-shared
+      - ./nginx/40-initialize.sh:/docker-entrypoint.d/40-generate-sites.sh
+      - $HOME/poper:$HOME/poper

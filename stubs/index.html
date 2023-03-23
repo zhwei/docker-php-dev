@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local PHP Development Environment</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px 15px;
+        }
+        td:nth-child(2) {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sites</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>URL</th>
+                <th>Secure</th>
+                <th>Root</th>
+            </tr>
+        </thead>
+        <tbody id="sites-list">
+        </tbody>
+    </table>
+
+    <script>
+        sites = [];
+
+        sites.forEach(site => {
+            let row = document.createElement('tr');
+            let url = document.createElement('td');
+            let secure = document.createElement('td');
+            let root = document.createElement('td');
+
+            urlContent = (site.secure ? 'https' : 'http') + '://' + site.domain;
+            url.innerHTML = `<a href="${urlContent}" target="_blank">${urlContent}</a>`;
+            secure.innerHTML = site.secure ? 'Yes' : 'No';
+            root.innerHTML = site.root;
+
+            row.appendChild(url);
+            row.appendChild(secure);
+            row.appendChild(root);
+
+            document.getElementById('sites-list').appendChild(row);
+        });
+    </script>
+</body>
+</html>

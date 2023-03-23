@@ -1,0 +1,4 @@
+[
+    {"domain": "php73.test", "root": "/php-shared/debug", "fpm": "php73", "secure": false},
+    {"domain": "php82.test", "root": "/php-shared/debug", "fpm": "php82", "secure": true}
+]
