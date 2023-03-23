@@ -15,14 +15,13 @@
     ```
 
 2. Config your sites in `site.json`
-
-- `domain` is the domain name of your site, eg: `comiru.test`
-    - Remind: need to add to `/etc/hosts` file, eg: `comiru.test 127.0.0.1`
-- `root` is the project public directory
-    - Remind: need to mount into container in docker-compose.yml, eg: `$HOME/poper`
-- `fpm` is the PHP-FPM service name in docker-compose.yml
-- `aliases` is the domain aliases of your site, eg: `["www.comiru.test", "sso.comiru.test"]`
-- `secure` is the HTTPS support, default is `true`
+    - `domain` is the domain name of your site, eg: `comiru.test`
+        - Remind: need to add to `/etc/hosts` file, eg: `comiru.test 127.0.0.1`
+    - `root` is the project public directory
+        - Remind: need to mount into container in docker-compose.yml, eg: `$HOME/poper`
+    - `fpm` is the PHP-FPM service name in docker-compose.yml
+    - `aliases` is the domain aliases of your site, eg: `["www.comiru.test", "sso.comiru.test"]`
+    - `secure` is the HTTPS support, default is `true`
 
 1. Generate SSL certificates
 
