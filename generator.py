@@ -71,7 +71,11 @@ def generate_certs(sites: list):
     print(f'> {cmd}')
     os.system(cmd)
 
-    domains = []
+    domains = [
+        'localhost',
+        '127.0.0.1',
+        '0.0.0.0',
+    ]
     for configs in sites:
         domains.append(configs['domain'])
         if configs.get('aliases', None):
